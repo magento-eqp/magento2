@@ -11,8 +11,6 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Command\Command;
 use Magento\Framework\Composer\MagentoComposerApplicationFactory;
-use Magento\Framework\Composer\ComposerInformation;
-
 
 class MagicUpdateCommand extends Command
 {
@@ -21,19 +19,13 @@ class MagicUpdateCommand extends Command
      */
     private $magentoComposerApplication;
 
-    private $composerInformation;
-
     /**
      * MagicUpdateCommand constructor.
      * @param MagentoComposerApplicationFactory $composerAppFactory
      */
-    public function __construct(
-        MagentoComposerApplicationFactory $composerAppFactory,
-        ComposerInformation $composerInformation
-    )
+    public function __construct(MagentoComposerApplicationFactory $composerAppFactory)
     {
         $this->magentoComposerApplication = $composerAppFactory->create();
-        $this->composerInformation = $composerInformation;
         parent::__construct();
     }
 
