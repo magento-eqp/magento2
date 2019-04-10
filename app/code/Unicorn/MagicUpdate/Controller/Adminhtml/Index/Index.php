@@ -6,7 +6,7 @@
 declare(strict_types=1);
 
 
-namespace Unicorn\MagicUpdate\Controller\Adminhtml;
+namespace Unicorn\MagicUpdate\Controller\Adminhtml\Index;
 
 use Magento\Framework\App\Action\HttpGetActionInterface as HttpGetActionInterface;
 
@@ -36,10 +36,10 @@ class Index extends \Magento\Backend\App\AbstractAction implements HttpGetAction
      */
     public function execute()
     {
-        /** @var \Magento\Backend\Model\View\Result\Page $resultPage */
-        $resultPage = $this->resultPageFactory->create();
-//        $resultPage->setActiveMenu('Magento_Catalog::catalog_products');
-        $resultPage->getConfig()->getTitle()->prepend(__('Module Manager'));
+        $this->_view->loadLayout();
+        $this->_setActiveMenu('Magento_CatalogRule::promo');
+        $this->_addBreadcrumb(__('Promotions'), __('Promo'));
+        $this->_view->renderLayout();
 
     }
 }
