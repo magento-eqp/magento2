@@ -10,6 +10,7 @@
         <arguments>
             <argument name="commands" xsi:type="array">
                 <item name="magic_update" xsi:type="object">Unicorn\MagicUpdate\Console\Command\MagicUpdateCommand</item>
+                <item name="magic_list" xsi:type="object">Unicorn\MagicUpdate\Console\Command\MagicListCommand</item>
             </argument>
         </arguments>
     </type>

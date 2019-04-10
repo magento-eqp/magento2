@@ -34,6 +34,28 @@ class ModuleList
     {
         $this->magentoComposerApplication = $composerAppFactory->create();
         $this->composerInformation = $composerInformation;
+
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getModuleStatusList()
+    {
+
+        $commandParameters = [
+            'command' => 'show',
+            '--format' => 'json',
+            '--latest' => 'true',
+        ];
+
+        $output = $this->magentoComposerApplication->runComposerCommand($commandParameters);
+        $jsonOutput = substr($output, strpos ($output, '{'));
+        $installedDependencies = json_decode($jsonOutput, true)['installed'];
+        return  [
+            'totalRecords' => count($installedDependencies),
+            'items'  => $installedDependencies
+            ];
     }
 
     /**
