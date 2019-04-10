@@ -10,22 +10,24 @@ namespace Unicorn\MagicUpdate\Console\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Command\Command;
-use Magento\Framework\Composer\MagentoComposerApplicationFactory;
+use Unicorn\MagicUpdate\Model\ModuleList;
 
 class MagicUpdateCommand extends Command
 {
     /**
-     * @var MagentoComposerApplication
+     * @var ModuleList
      */
-    private $magentoComposerApplication;
+    private $moduleList;
 
     /**
      * MagicUpdateCommand constructor.
-     * @param MagentoComposerApplicationFactory $composerAppFactory
+     * @param ModuleList $moduleList
      */
-    public function __construct(MagentoComposerApplicationFactory $composerAppFactory)
+    public function __construct(
+        ModuleList $moduleList
+    )
     {
-        $this->magentoComposerApplication = $composerAppFactory->create();
+        $this->moduleList = $moduleList;
         parent::__construct();
     }
 
@@ -44,13 +46,9 @@ class MagicUpdateCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $commandParameters = [
-            'command' => 'show',
-            '--outdated' => true,
-            '--minor-only' => true,
-            '--format' => 'json'
-        ];
-        $outdatedDependencies = $this->magentoComposerApplication->runComposerCommand($commandParameters);
-        $output->writeln($outdatedDependencies);
+        $dependencies = $this->moduleList->getModuleList();
+       foreach ($dependencies as $dependency){
+           $output->writeln($dependency['name']);
+       }
     }
 }
