@@ -1,0 +1,33 @@
+// /**
+//  * Copyright © Magento, Inc. All rights reserved.
+//  * See COPYING.txt for license details.
+//  */
+
+//
+//  Variables
+//  _____________________________________________
+
+// Fonts
+@magicupdate-icons-admin__font-name: 'MagicUpdate';
+@magicupdate-icons-admin__font-path: '@{baseDir}Unicorn_MagicUpdate/fonts/magicupdate-icons';
+.lib-font-face(
+    @family-name: @magicupdate-icons-admin__font-name,
+    @font-path: @magicupdate-icons-admin__font-path,
+    @font-weight: @font-weight__regular,
+    @font-style: normal
+);
+
+//  Icons
+@icon-unicorn__content: "\e900";
+
+//
+//  Menu
+//  _____________________________________________
+
+.admin__menu .item-magicupdate.parent.level-0 > a:before {
+    font-family: @magicupdate-icons-admin__font-name;
+    content: @icon-unicorn__content;
+    font-size: 2.7rem;
+    margin-bottom: 1rem;
+}
+
