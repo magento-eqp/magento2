@@ -43,6 +43,6 @@ class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
      */
     public function getData()
     {
-        return $this->moduleList->getModuleStatusList();
+        return $this->moduleList->getModuleList();
     }
 }

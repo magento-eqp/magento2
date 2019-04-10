@@ -9,6 +9,7 @@ namespace Unicorn\MagicUpdate\Model;
 
 use Magento\Framework\Composer\MagentoComposerApplicationFactory;
 use Magento\Framework\Composer\ComposerInformation;
+use Unicorn\MagicUpdate\Logger\Logger;
 
 class ModuleList
 {
@@ -23,58 +24,43 @@ class ModuleList
     private $composerInformation;
 
     /**
+     * @var Logger
+     */
+    private $logger;
+
+    /**
      * ModuleList constructor.
      * @param MagentoComposerApplicationFactory $composerAppFactory
      * @param ComposerInformation $composerInformation
+     * @param Logger $logger
      */
     public function __construct(
         MagentoComposerApplicationFactory $composerAppFactory,
-        ComposerInformation $composerInformation
+        ComposerInformation $composerInformation,
+        Logger $logger
     )
     {
         $this->magentoComposerApplication = $composerAppFactory->create();
         $this->composerInformation = $composerInformation;
-
+        $this->logger = $logger;
     }
 
     /**
-     * @return mixed
-     */
-    public function getModuleStatusList()
-    {
-
-        $commandParameters = [
-            'command' => 'show',
-            '--format' => 'json',
-            '--latest' => 'true',
-        ];
-
-        $output = $this->magentoComposerApplication->runComposerCommand($commandParameters);
-        $jsonOutput = substr($output, strpos ($output, '{'));
-        $installedDependencies = json_decode($jsonOutput, true)['installed'];
-        return  [
-            'totalRecords' => count($installedDependencies),
-            'items'  => $installedDependencies
-            ];
-    }
-
-    /**
-     * @return mixed
+     * @return array
      */
     public function getModuleList()
     {
         //$installedMagentoModules = $this->composerInformation->getInstalledMagentoPackages();
-
         $installedMagentoModules = [
             'vendor/ext' => [
-                'name' => 'allure-framework/allure-codeception',
+                'name' => 'zendframework/zend-http',
                 'type' => 'magento2-module',
                 'version' => '1.0.0'
             ],
             'vendor/ext2' => [
                 'name' => 'symfony/polyfill-php72',
                 'type' => 'magento2-theme',
-                'version' => '1.0.1'
+                'version' => '1.0.0'
             ]
         ];
         $commandParameters = [
@@ -84,7 +70,7 @@ class ModuleList
         ];
 
         $output = $this->magentoComposerApplication->runComposerCommand($commandParameters);
-        $jsonOutput = substr($output, strpos ($output, '{'));
+        $jsonOutput = substr($output, strpos($output, '{'));
         $installedDependencies = json_decode($jsonOutput, true)['installed'];
         $installedMagentoModulesNames = array_column(array_values($installedMagentoModules), 'name');
         $moduleList = [];
@@ -93,37 +79,34 @@ class ModuleList
                 $moduleList[] = $dependency;
             }
         }
+        return  [
+            'totalRecords' => count($installedDependencies),
+            'items'  => $moduleList
+        ];
+    }
 
-        //$moduleList example
-
-        /*array(2) {
-          [0] =>
-          array(5) {
-            'name' =>
-            string(35) "allure-framework/allure-codeception"
-            'version' =>
-            string(5) "1.3.0"
-            'latest' =>
-            string(5) "1.3.0"
-            'latest-status' =>
-            string(10) "up-to-date"
-            'description' =>
-            string(40) "A Codeception adapter for Allure report."
-          }
-          [1] =>
-          array(5) {
-            'name' =>
-            string(22) "symfony/polyfill-php72"
-            'version' =>
-            string(7) "v1.11.0"
-            'latest' =>
-            string(7) "v1.11.0"
-            'latest-status' =>
-            string(10) "up-to-date"
-            'description' =>
-            string(73) "Symfony polyfill backporting some PHP 7.2+ features to lower PHP versions"
-          }
-        }*/
-        return $moduleList;
+    /**
+     * Method performs composer update.
+     * ToDo: find a better place for this method.
+     */
+    public function doSafeUpdate()
+    {
+        $this->logger->info('Update started.');
+        $dependencies = $this->getModuleList()['items'];
+        $commandParameters = [
+            'command' => 'update'
+        ];
+        foreach ($dependencies as $dependency) {
+            if ($dependency['latest-status'] === 'semver-safe-update') {
+                $commandParameters['packages'][] = $dependency['name'];
+            }
+        }
+        try {
+            $output = $this->magentoComposerApplication->runComposerCommand($commandParameters);
+            $this->logger->info(sprintf('Updating %s. Output: %s', implode(', ', $commandParameters['packages']), $output));
+        } catch (\RuntimeException $e) {
+            $this->logger->addError(sprintf('Update failed: %s', $e->getMessage()));
+        }
+        $this->logger->info('Update finished.');
     }
 }

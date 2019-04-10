@@ -46,9 +46,6 @@ class MagicUpdateCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $dependencies = $this->moduleList->getModuleList();
-       foreach ($dependencies as $dependency){
-           $output->writeln($dependency['name']);
-       }
+        $this->moduleList->doSafeUpdate();
     }
 }
