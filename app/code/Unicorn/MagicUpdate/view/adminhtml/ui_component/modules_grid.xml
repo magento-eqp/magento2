@@ -8,36 +8,52 @@
 <listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
     <argument name="data" xsi:type="array">
         <item name="js_config" xsi:type="array">
-            <item name="provider" xsi:type="string">notification_area.notification_area_data_source</item>
+            <item name="provider" xsi:type="string">modules_grid.modules_grid_data_source</item>
         </item>
     </argument>
     <settings>
         <spinner>columns</spinner>
         <deps>
-            <dep>notification_area.notification_area_data_source</dep>
+            <dep>modules_grid.modules_grid_data_source</dep>
         </deps>
     </settings>
-    <dataSource name="notification_area_data_source" component="Magento_Ui/js/grid/provider">
+    <dataSource name="modules_grid_data_source" component="Magento_Ui/js/grid/provider">
         <settings>
             <storageConfig>
-                <param name="indexField" xsi:type="string">identity</param>
+                <param name="indexField" xsi:type="string">module_name</param>
             </storageConfig>
             <updateUrl path="mui/index/render"/>
         </settings>
-        <aclResource>Magento_AdminNotification::show_list</aclResource>
-        <dataProvider class="Magento\AdminNotification\Ui\Component\DataProvider\DataProvider" name="notification_area_data_source">
+        <dataProvider class="Unicorn\MagicUpdate\Ui\Component\DataProvider\DataProvider" name="modules_grid_data_source">
             <settings>
-                <requestFieldName>identity</requestFieldName>
-                <primaryFieldName>identity</primaryFieldName>
+                <requestFieldName>module_name</requestFieldName>
+                <primaryFieldName>module_name</primaryFieldName>
             </settings>
         </dataProvider>
     </dataSource>
-    <columns name="columns" component="Magento_AdminNotification/js/grid/listing" template="Magento_AdminNotification/grid/listing">
-        <column name="created_at" component="Magento_AdminNotification/js/grid/columns/message" sortOrder="30">
+    <columns name="modules_columns">
+        <column name="module_name" sortOrder="30">
             <settings>
                 <dataType>text</dataType>
                 <label translate="true"/>
-                <sorting>asc</sorting>
+            </settings>
+        </column>
+        <column name="module_name" sortOrder="10">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Module Name</label>
+            </settings>
+        </column>
+        <column name="version" sortOrder="20">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Version</label>
+            </settings>
+        </column>
+        <column name="status" sortOrder="30">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Status</label>
             </settings>
         </column>
     </columns>
