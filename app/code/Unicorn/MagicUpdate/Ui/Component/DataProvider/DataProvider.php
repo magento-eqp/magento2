@@ -9,8 +9,12 @@ declare(strict_types=1);
 namespace Unicorn\MagicUpdate\Ui\Component\DataProvider;
 
 
+use Unicorn\MagicUpdate\Model\ModuleList;
+
 class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
 {
+
+    private $moduleList;
     /**
      * DataProvider constructor.
      * @param $name
@@ -18,15 +22,18 @@ class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
      * @param $requestFieldName
      * @param array $meta
      * @param array $data
+     * @param ModuleList $moduleList
      */
     public function __construct(
         $name,
         $primaryFieldName,
         $requestFieldName,
+        ModuleList $moduleList,
         array $meta = [],
         array $data = []
     ) {
         parent::__construct($name, $primaryFieldName, $requestFieldName, $meta, $data);
+        $this->moduleList = $moduleList;
     }
 
     /**
@@ -36,23 +43,6 @@ class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
      */
     public function getData()
     {
-        return [
-            'totalRecords' => 1,
-            'items' => [
-                ['module_name' => 'Module_Name',
-                    'version' => '2.1.0',
-                    'status' => 'up-to-date'
-                ],
-                ['module_name' => 'Module_Name2',
-                    'version' => '1.2.0',
-                    'status' => 'update-possible'
-                ],
-                ['module_name' => 'Module_Name2',
-                    'version' => '2.3.0',
-                    'status' => 'semver-safe-update'
-                ],
-            ]
-        ];
+        return $this->moduleList->getModuleStatusList();
     }
-
 }
