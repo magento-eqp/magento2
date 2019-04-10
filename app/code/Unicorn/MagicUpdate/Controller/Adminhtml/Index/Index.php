@@ -32,14 +32,16 @@ class Index extends \Magento\Backend\App\AbstractAction implements HttpGetAction
     }
 
     /**
-     * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\ResultInterface|void
+     * @return \Magento\Backend\Model\View\Result\Page
      */
     public function execute()
     {
-        $this->_view->loadLayout();
-        $this->_setActiveMenu('Magento_CatalogRule::promo');
-        $this->_addBreadcrumb(__('Promotions'), __('Promo'));
-        $this->_view->renderLayout();
+        /** @var \Magento\Backend\Model\View\Result\Page $resultPage */
+        $resultPage = $this->resultPageFactory->create();
+        $resultPage->initLayout();
+        $resultPage->setActiveMenu('Unicorn_MagicUpdate::magicupdate');
+        $resultPage->getConfig()->getTitle()->prepend(__('Configure Updates'));
+        return $resultPage;
 
     }
 }
