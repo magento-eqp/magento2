@@ -265,6 +265,7 @@
         "magento/framework-amqp": "*",
         "magento/framework-bulk": "*",
         "magento/framework-message-queue": "*",
+        "unicorn/module-magic-update": "*",
         "trentrichardson/jquery-timepicker-addon": "1.4.3",
         "components/jquery": "1.11.0",
         "blueimp/jquery-file-upload": "5.6.14",
