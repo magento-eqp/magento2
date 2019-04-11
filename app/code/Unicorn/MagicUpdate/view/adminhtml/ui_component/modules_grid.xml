@@ -12,6 +12,10 @@
         </item>
     </argument>
     <settings>
+        <buttons>
+            <button name="refresh" class="Unicorn\MagicUpdate\Block\Adminhtml\Modules\Grid\RefreshButton"/>
+            <button name="update" class="Unicorn\MagicUpdate\Block\Adminhtml\Modules\Grid\UpdateButton"/>
+        </buttons>
         <spinner>modules_columns</spinner>
         <deps>
             <dep>modules_grid.modules_grid_data_source</dep>
