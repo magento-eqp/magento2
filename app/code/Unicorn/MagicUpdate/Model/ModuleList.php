@@ -16,8 +16,8 @@ class ModuleList
 {
     private const SEMVER_STATUS_MAP = [
         'semver-safe-update' => '<b>Outdated.</b> Safe Update',
-        'update-possible' => '<b>Outdated.<b> Unsafe Update',
-        'up-to-date' => '<b>Up to Date<b>. Nothing to Update'
+        'update-possible' => '<b>Outdated.</b> Unsafe Update',
+        'up-to-date' => '<b>Up to Date</b>. Nothing to Update'
     ];
 
     /**
