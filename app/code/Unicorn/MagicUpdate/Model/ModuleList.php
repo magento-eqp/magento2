@@ -14,6 +14,12 @@ use Unicorn\MagicUpdate\Logger\Logger;
 
 class ModuleList
 {
+    private const SEMVER_STATUS_MAP = [
+        'semver-safe-update' => '<b>Outdated.</b> Safe Update',
+        'update-possible' => '<b>Outdated.<b> Unsafe Update',
+        'up-to-date' => '<b>Up to Date<b>. Nothing to Update'
+    ];
+
     /**
      * @var MagentoComposerApplication
      */
@@ -75,6 +81,7 @@ class ModuleList
             $installedMagentoModulesNames = array_column(array_values($installedMagentoModules), 'name');
             $moduleList = [];
             foreach ($installedDependencies as $dependency) {
+                $dependency['status-text'] = self::SEMVER_STATUS_MAP[$dependency['latest-status']];
                 if (in_array($dependency['name'], $installedMagentoModulesNames, true)) {
                     $moduleList[] = $dependency;
                 }
