@@ -6,4 +6,5 @@
 -->
 <div class="data-grid-cell-content">
     <div data-bind="attr:{class: $col.getLabel($row())}"/>
+        <span data-bind="attr:{class: 'status-' + $col.getLabel($row())}" text="$col.getLabel($row())"/>
 </div>

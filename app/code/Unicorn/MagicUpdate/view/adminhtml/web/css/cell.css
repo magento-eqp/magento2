@@ -5,23 +5,31 @@
 .up-to-date {
     width: 1%;
     padding: 10px 11px;
-    margin: 0 auto;
     border-radius: 25px;
     background-color: #6B8E23;
+}
+.status-up-to-date {
+    color: #6B8E23;
 }
 
 .update-possible {
     width: 1%;
     padding: 10px 11px;
-    margin: 0 auto;
     border-radius: 25px;
-    background-color: #FFFF66;
+    background-color: #ffa500;
+}
+
+.status-update-possible {
+    color: #ffa500;
 }
 
 .semver-safe-update {
     width: 1%;
     padding: 10px 11px;
-    margin: 0 auto;
     border-radius: 25px;
     background-color: #FF6347;
+}
+
+.status-semver-safe-update {
+    color: #FF6347;
 }
