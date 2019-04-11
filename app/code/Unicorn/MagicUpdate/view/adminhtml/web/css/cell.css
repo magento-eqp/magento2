@@ -8,6 +8,8 @@
     width: 25px;
     border-radius: 50%;
     background-color: #6B8E23;
+    line-height: 25px;
+    vertical-align: middle;
 }
 
 
@@ -17,6 +19,8 @@
     width: 25px;
     border-radius: 50%;
     background-color: #ffa500;
+    line-height: 25px;
+    vertical-align: middle;
 }
 
 .semver-safe-update {
@@ -25,4 +29,15 @@
     width: 25px;
     border-radius: 50%;
     background-color: #FF6347;
+    line-height: 25px;
+    vertical-align: middle;
+}
+
+.legend .content div {
+    padding-bottom: 5px;
+}
+
+.admin__fieldset-wrapper-content .admin__fieldset {
+    padding-bottom: 0rem;
+    padding-top: 0rem;
 }
