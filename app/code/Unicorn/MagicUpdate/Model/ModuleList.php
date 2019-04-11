@@ -80,7 +80,7 @@ class ModuleList
                 }
             }
             $res = [
-                'totalRecords' => count($installedDependencies),
+                'totalRecords' => count($moduleList),
                 'items' => $moduleList
             ];
 
