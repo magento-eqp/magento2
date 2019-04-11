@@ -14,7 +14,6 @@ class UpdateModuleCron
         ModuleList $moduleList
     ) {
         $this->moduleList = $moduleList;
-        parent::__construct();
     }
 
     public function execute()

@@ -3,9 +3,10 @@
  * See COPYING.txt for license details.
  */
 .up-to-date {
-    width: 1%;
-    padding: 10px 11px;
-    border-radius: 25px;
+    display: inline-block;
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
     background-color: #6B8E23;
 }
 .status-up-to-date {
@@ -13,9 +14,10 @@
 }
 
 .update-possible {
-    width: 1%;
-    padding: 10px 11px;
-    border-radius: 25px;
+    display: inline-block;
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
     background-color: #ffa500;
 }
 
@@ -24,9 +26,10 @@
 }
 
 .semver-safe-update {
-    width: 1%;
-    padding: 10px 11px;
-    border-radius: 25px;
+    display: inline-block;
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
     background-color: #FF6347;
 }
 
