@@ -53,9 +53,9 @@
                     <item name="visible" xsi:type="boolean">true</item>
                     <item name="content" xsi:type="string" translate="true">
                         <![CDATA[
-                            <div><span data-bind="attr:{class: $col.getLabel($row())}" class="up-to-date"></span> Dependency is in the latest version and is up to date.</div>
-                            <div><span data-bind="attr:{class: $col.getLabel($row())}" class="update-possible"></span> Dependency has a new version available that includes backwards compatibility breaks according to semver, so upgrade when you can but it may involve work.</div>
-                            <div><span data-bind="attr:{class: $col.getLabel($row())}" class="semver-safe-update"></span> Dependency has a new version that is semver-compatible and you should upgrade it.</div>
+                            <div><span data-bind="attr:{class: $col.getLabel($row())}" class="up-to-date-small"></span> Dependency is in the latest version and is up to date.</div>
+                            <div><span data-bind="attr:{class: $col.getLabel($row())}" class="update-possible-small"></span> Dependency has a new version available that includes backwards compatibility breaks according to semver, so upgrade when you can but it may involve work.</div>
+                            <div><span data-bind="attr:{class: $col.getLabel($row())}" class="semver-safe-update-small"></span> Dependency has a new version that is semver-compatible and you should upgrade it.</div>
                         ]]>
                     </item>
                 </item>

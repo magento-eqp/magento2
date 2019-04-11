@@ -33,6 +33,37 @@
     vertical-align: middle;
 }
 
+.up-to-date-small {
+    display: inline-block;
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    background-color: #6B8E23;
+    line-height: 25px;
+    vertical-align: middle;
+}
+
+
+.update-possible-small {
+    display: inline-block;
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    background-color: #ffa500;
+    line-height: 25px;
+    vertical-align: middle;
+}
+
+.semver-safe-update-small {
+    display: inline-block;
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    background-color: #FF6347;
+    line-height: 25px;
+    vertical-align: middle;
+}
+
 .legend .content div {
     padding-bottom: 5px;
 }
