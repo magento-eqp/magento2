@@ -8,10 +8,12 @@
     <span text="$col.getFullLabel($row())" ifnot="$col.isExpandable($row())"/>
 
     <div if="$col.isExpandable($row())">
-        <div text="$col.getShortLabel($row())" class="admin__control-short-label" />
-        <span attr="'data-tooltip-trigger': ++ko.uid" class="data-tooltip-trigger" text="$col.getLabel($row())"/>
-        <div
-                tooltip="
+        <div text="$col.getShortLabel($row())" class="admin__control-short-label"/>
+        <span text="$col.getLabel($row())"/>
+        <div if="!!$col.getTooltip($row())">
+            <i attr="'data-tooltip-trigger': ++ko.uid" class="fa fa-question-circle data-tooltip-trigger"></i>
+            <div
+                    tooltip="
                 tooltipClasses: 'data-grid-column-tooltip',
                 trigger: '[data-tooltip-trigger=' + ko.uid + ']',
                 action: 'hover',
@@ -20,7 +22,8 @@
                 position: 'right',
                 closeOnScroll: false
             ">
-            <div render="$data.tooltipTmpl"/>
+                <div render="$data.tooltipTmpl"/>
+            </div>
         </div>
     </div>
 </div>

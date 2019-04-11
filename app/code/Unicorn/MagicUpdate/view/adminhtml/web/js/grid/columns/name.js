@@ -16,6 +16,7 @@ define([
         },
 
         /**
+         * Get tooltip text from description
          *
          * @param record
          * @return {*}
