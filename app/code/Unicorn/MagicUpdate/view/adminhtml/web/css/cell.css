@@ -1,0 +1,27 @@
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+.up-to-date {
+    width: 1%;
+    padding: 10px 11px;
+    margin: 0 auto;
+    border-radius: 25px;
+    background-color: #6B8E23;
+}
+
+.update-possible {
+    width: 1%;
+    padding: 10px 11px;
+    margin: 0 auto;
+    border-radius: 25px;
+    background-color: #FFFF66;
+}
+
+.semver-safe-update {
+    width: 1%;
+    padding: 10px 11px;
+    margin: 0 auto;
+    border-radius: 25px;
+    background-color: #FF6347;
+}

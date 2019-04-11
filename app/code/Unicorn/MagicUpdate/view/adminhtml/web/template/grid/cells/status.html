@@ -4,8 +4,6 @@
  * See COPYING.txt for license details.
  */
 -->
-<td class="data-grid-indicator-cell">
-    <span class="component-indicator _on" ng-class="getIndicatorInfo(item, 'icon')" data-label="On">
-        <span class="ng-binding">On</span>
-    </span>
-</td>
+<div class="data-grid-cell-content">
+    <div data-bind="attr:{class: $col.getLabel($row())}"/>
+</div>
