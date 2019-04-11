@@ -36,6 +36,13 @@
         </dataProvider>
     </dataSource>
     <columns name="modules_columns">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="resizeConfig" xsi:type="array">
+                    <item name="enabled" xsi:type="boolean">true</item>
+                </item>
+            </item>
+        </argument>
         <column name="name" sortOrder="10" component="Unicorn_MagicUpdate/js/grid/columns/name">
             <settings>
                 <sortable>false</sortable>

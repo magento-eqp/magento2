@@ -9,9 +9,7 @@
     border-radius: 50%;
     background-color: #6B8E23;
 }
-.status-up-to-date {
-    color: #6B8E23;
-}
+
 
 .update-possible {
     display: inline-block;
@@ -21,18 +19,10 @@
     background-color: #ffa500;
 }
 
-.status-update-possible {
-    color: #ffa500;
-}
-
 .semver-safe-update {
     display: inline-block;
     height: 25px;
     width: 25px;
     border-radius: 50%;
     background-color: #FF6347;
-}
-
-.status-semver-safe-update {
-    color: #FF6347;
 }

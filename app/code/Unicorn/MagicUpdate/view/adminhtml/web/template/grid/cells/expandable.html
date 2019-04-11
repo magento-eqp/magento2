@@ -9,7 +9,7 @@
 
     <div if="$col.isExpandable($row())">
         <div text="$col.getShortLabel($row())" class="admin__control-short-label" />
-        <a attr="'data-tooltip-trigger': ++ko.uid" text="$col.getLabel($row())"/>
+        <span attr="'data-tooltip-trigger': ++ko.uid" class="data-tooltip-trigger" text="$col.getLabel($row())"/>
         <div
                 tooltip="
                 tooltipClasses: 'data-grid-column-tooltip',
