@@ -114,7 +114,7 @@ class ModuleList
         } catch (\RuntimeException $e) {
             $this->logger->addError(sprintf('Update failed: %s', $e->getMessage()));
         }
-        $this->cache->clean($this->cache_id);
+        $this->cache->remove($this->cache_id);
         $this->logger->info('Update finished.');
     }
 }
