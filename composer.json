@@ -40,6 +40,8 @@
         "magento/magento-composer-installer": ">=0.1.11",
         "magento/zendframework1": "~1.14.1",
         "monolog/monolog": "^1.17",
+        "msp/adminrestriction": "^1.0",
+        "msp/cmsimportexport": "^1.0",
         "oyejorge/less.php": "~1.7.0",
         "paragonie/sodium_compat": "^1.6",
         "pelago/emogrifier": "^2.0.0",
