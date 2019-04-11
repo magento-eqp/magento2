@@ -32,7 +32,7 @@
         </dataProvider>
     </dataSource>
     <columns name="modules_columns">
-        <column name="name" sortOrder="10">
+        <column name="name" sortOrder="10" component="Unicorn_MagicUpdate/js/grid/columns/name">
             <settings>
                 <sortable>false</sortable>
                 <dataType>text</dataType>
@@ -59,13 +59,6 @@
                 <dataType>text</dataType>
                 <label translate="true">Status</label>
                 <bodyTmpl>Unicorn_MagicUpdate/grid/cells/status</bodyTmpl>
-            </settings>
-        </column>
-        <column name="description" sortOrder="50">
-            <settings>
-                <sortable>false</sortable>
-                <dataType>text</dataType>
-                <label translate="true">Description</label>
             </settings>
         </column>
     </columns>

@@ -1,0 +1,26 @@
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<div class="data-grid-cell-content">
+    <span text="$col.getFullLabel($row())" ifnot="$col.isExpandable($row())"/>
+
+    <div if="$col.isExpandable($row())">
+        <div text="$col.getShortLabel($row())" class="admin__control-short-label" />
+        <a attr="'data-tooltip-trigger': ++ko.uid" text="$col.getLabel($row())"/>
+        <div
+                tooltip="
+                tooltipClasses: 'data-grid-column-tooltip',
+                trigger: '[data-tooltip-trigger=' + ko.uid + ']',
+                action: 'click',
+                delay: 0,
+                center: true,
+                position: 'right',
+                closeOnScroll: false
+            ">
+            <div render="$data.tooltipTmpl"/>
+        </div>
+    </div>
+</div>
