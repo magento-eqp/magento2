@@ -6,7 +6,7 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Cron:etc/crontab.xsd">
-    <group id="default">
+    <group id="magic_update">
         <job name="magic_update_cronjob" instance="Unicorn\MagicUpdate\Console\Command\MagicUpdateCommand" method="execute">
             <schedule>* * * * *</schedule>
         </job>

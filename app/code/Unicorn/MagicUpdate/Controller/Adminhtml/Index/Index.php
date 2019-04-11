@@ -40,7 +40,7 @@ class Index extends \Magento\Backend\App\AbstractAction implements HttpGetAction
         $resultPage = $this->resultPageFactory->create();
         $resultPage->initLayout();
         $resultPage->setActiveMenu('Unicorn_MagicUpdate::magicupdate');
-        $resultPage->getConfig()->getTitle()->prepend(__('Configure Updates'));
+        $resultPage->getConfig()->getTitle()->prepend(__('Installed Magento Extensions'));
         return $resultPage;
 
     }

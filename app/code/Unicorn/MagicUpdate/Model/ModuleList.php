@@ -41,13 +41,15 @@ class ModuleList
      * @param MagentoComposerApplicationFactory $composerAppFactory
      * @param ComposerInformation $composerInformation
      * @param Logger $logger
+     * @param CacheInterface $cache
      */
     public function __construct(
         MagentoComposerApplicationFactory $composerAppFactory,
         ComposerInformation $composerInformation,
         Logger $logger,
         CacheInterface $cache
-    ) {
+    )
+    {
         $this->magentoComposerApplication = $composerAppFactory->create();
         $this->composerInformation = $composerInformation;
         $this->logger = $logger;
@@ -59,27 +61,14 @@ class ModuleList
      */
     public function getModuleList()
     {
-        //$installedMagentoModules = $this->composerInformation->getInstalledMagentoPackages();
-        $installedMagentoModules = [
-            'vendor/ext' => [
-                'name' => 'zendframework/zend-http',
-                'type' => 'magento2-module',
-                'version' => '1.0.0'
-            ],
-            'vendor/ext2' => [
-                'name' => 'symfony/polyfill-php72',
-                'type' => 'magento2-theme',
-                'version' => '1.0.0'
-            ]
-        ];
-        $commandParameters = [
-            'command' => 'show',
-            '--format' => 'json',
-            '--latest' => 'true',
-        ];
-
         $cacheResult = $this->cache->load($this->cache_id);
         if (!$cacheResult) {
+            $installedMagentoModules = $this->composerInformation->getInstalledMagentoPackages();
+            $commandParameters = [
+                'command' => 'show',
+                '--format' => 'json',
+                '--latest' => 'true',
+            ];
             $output = $this->magentoComposerApplication->runComposerCommand($commandParameters);
             $jsonOutput = substr($output, strpos($output, '{'));
             $installedDependencies = json_decode($jsonOutput, true)['installed'];
@@ -90,16 +79,16 @@ class ModuleList
                     $moduleList[] = $dependency;
                 }
             }
-            $res =   [
+            $res = [
                 'totalRecords' => count($installedDependencies),
-                'items'  => $moduleList
+                'items' => $moduleList
             ];
 
-            $this->cache->save(json_encode($res), $this->cache_id, [], 300 );
+            $this->cache->save(json_encode($res), $this->cache_id, [], 300);
             return $res;
         }
 
-        return json_decode($cacheResult);
+        return json_decode($cacheResult, true);
 
     }
 
@@ -125,6 +114,7 @@ class ModuleList
         } catch (\RuntimeException $e) {
             $this->logger->addError(sprintf('Update failed: %s', $e->getMessage()));
         }
+        $this->cache->clean($this->cache_id);
         $this->logger->info('Update finished.');
     }
 }

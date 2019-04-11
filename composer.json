@@ -52,7 +52,9 @@
         "symfony/process": "~4.1.0",
         "tedivm/jshrink": "~1.3.0",
         "tubalmartin/cssmin": "4.1.1",
+        "unicorn/module-magic-update-demo": "^1.0",
         "webonyx/graphql-php": "^0.12.6",
+        "yireo/magento2-whoops": "^0.0.11",
         "zendframework/zend-captcha": "^2.7.1",
         "zendframework/zend-code": "~3.3.0",
         "zendframework/zend-config": "^2.6.0",
@@ -326,5 +328,11 @@
             "Magento\\TestFramework\\Utility\\": "dev/tests/static/framework/Magento/TestFramework/Utility/"
         }
     },
+    "repositories": [
+        {
+            "url": "https://github.com/magento-eqp/module-magic-update.git",
+            "type": "git"
+        }
+    ],
     "prefer-stable": true
 }
