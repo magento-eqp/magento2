@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "99944c0ef23aba05ec0f89bb8d15f4e6",
+    "content-hash": "2b793b6d6709c5c11099f7b808f71b5d",
     "packages": [
         {
             "name": "braintree/braintree_php",
@@ -2788,11 +2788,11 @@
         },
         {
             "name": "unicorn/module-breaking-change-demo",
-            "version": "1.0.0",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/magento-eqp/unicorn-breaking-change.git",
-                "reference": "6a4a615ad3331e39553292a872cf62fa50210c3f"
+                "reference": "9af1a6f4cba1e1d48bcddb6260f7f68c08725140"
             },
             "require": {
                 "php": "~7.1.3||~7.2.0"
@@ -2811,7 +2811,7 @@
                 "AFL-3.0"
             ],
             "description": "Awesome unicorns show breaking changes!",
-            "time": "2019-04-11T19:11:57+00:00"
+            "time": "2019-04-11T19:15:03+00:00"
         },
         {
             "name": "unicorn/module-magic-update-demo",

@@ -54,7 +54,7 @@
         "symfony/process": "~4.1.0",
         "tedivm/jshrink": "~1.3.0",
         "tubalmartin/cssmin": "4.1.1",
-        "unicorn/module-breaking-change-demo": "^1.0",
+        "unicorn/module-breaking-change-demo": "^2.0",
         "unicorn/module-magic-update-demo": "^1.0",
         "webonyx/graphql-php": "^0.12.6",
         "yireo/magento2-whoops": "^0.0.11",
